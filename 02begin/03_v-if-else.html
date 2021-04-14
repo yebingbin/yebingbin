@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+     <!-- 引进vue.js -->
+     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+     <script src="js/vue.js"></script>
+</head>
+<body>
+    <div id="app3">
+        <div v-if="isLogin">
+        欢迎 钉钉
+        <a href="javascript:;" @click="logout">注销</a>
+        </div>
+
+    <div v-else>
+       <a href="javascript:;" @click="login">登录</a> | 
+       <a href="javascript:;">注册</a>
+    </div>
+    </div>
+    <script>
+     var vm=new Vue({
+         el:"#app3",
+         data:{
+             //因为界面上需要一个变量isLogin来表示是否登录
+             isLogin:true,
+         },
+         methods:{
+             logout(){
+                 console.log("logout....");
+                 this.isLogin=false;
+             },
+             login(){
+                 this.isLogin=true;
+             },
+         },
+     });
+
+        // v-show采用display:none隐藏元素-效率高，因为未改变DOM树结构
+        // v-if采用直接删除元素隐藏元素，可能会被频繁修改DOM树-效率低
+        // v-else：只要控制两个元素，二选一显示隐藏
+    </script>
+</body>
+</html>
